@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <style>
+        /* Style for the form container */
+        .form-container {
+            width: 350px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: skyblue;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Style for form input fields and labels */
+        input[type="text"], label {
+            display: block;
+            margin-bottom: 15px;
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        /* Style for form buttons */
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Style for the 'Check All Student Details' button */
+        .check-button {
+            display: block;
+            margin: 20px auto; /* Center the button */
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .check-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Student Form</h2>
+
+    <form action="Process" method="post">
+        <div>
+            <label for="rollNo">Roll No:</label>
+            <input type="text" id="rollNo" name="rollNo" required="required">
+        </div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required="required">
+        </div>
+
+        <h3>Address</h3>
+
+        <div>
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street" required="required">
+        </div>
+        <div>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required="required">
+        </div>
+        <div>
+            <label for="courses">Courses:</label>
+            <input type="text" id="courses" name="courses" required="required">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<!-- 'Check All Student Details' button outside the form -->
+<form action="/check" class="check-button ">
+    <button type="submit">Check All Student Details</button>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333; /* Dark gray text color */
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: skyblue; /* Sky blue background color */
+            border-radius: 8px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow content */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+            color: #666; /* Medium gray text color */
+        }
+        
+        th {
+            background-color: #f2f2f2; /* Light gray background color for header */
+            color: #333; /* Dark gray text color for header */
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Alternate row background color */
+        }
+        
+        tr:hover {
+            background-color: #f2f2f2; /* Hover row background color */
+        }
+        
+        .action-buttons form {
+            display: inline;
+            margin-right: 5px;
+        }
+        
+        .action-buttons button {
+            background-color: #4CAF50; /* Green button color */
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .action-buttons button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        
+        .add-button form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .add-button button {
+            background-color: #008CBA; /* Blue button color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-button button:hover {
+            background-color: #0073e6; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student List</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Courses</th>
+            <th>Action</th> <!-- New column for actions -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.rollNo}"></td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.street}"></td>
+            <td th:text="${student.city}"></td>
+            <td th:text="${student.courses}"></td>
+            <td class="action-buttons">
+                <!-- Update Button -->
+                <form th:action="@{'/update/' + ${student.rollNo}}" method="get">
+                    <button type="submit">Update</button>
+                </form>
+                
+                <!-- Delete Button -->
+                <form th:action="@{'/delete/' + ${student.rollNo}}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Add New Student Button -->
+<div class="add-button">
+    <form action="/add">
+        <button type="submit">Add New Student</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333; /* Dark gray text color */
+        }
+        
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff; /* White background color */
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333; /* Dark gray text color */
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        
+        button[type="submit"] {
+            background-color: #4CAF50; /* Green button color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+
+<h2>Update Student Form</h2>
+
+<form action="/Process" method="post">
+    <input type="hidden" id="rollNo" name="rollNo" th:value="${Id}">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required="required">
+    </div>
+
+    <h3>Address</h3> <!-- Added Address heading -->
+
+    <div>
+        <label for="street">Street:</label>
+        <input type="text" id="street" name="street" required="required">
+    </div>
+    <div>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required="required">
+    </div>
+    <div>
+        <label for="courses">Courses:</label>
+        <input type="text" id="courses" name="courses" required="required">
+    </div>
+
+    <button type="submit">Update</button>
+</form>
+
+</body>
+</html>
